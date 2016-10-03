@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour {
 	{
 		playerDistance = Vector3.Distance (player.position,	transform.position);
 
-		if (playerDistance < 25f) 
+		if (playerDistance < 30f) 
 		{
 			lookAtPlayer ();
 		}
@@ -30,9 +30,18 @@ public class Enemy : MonoBehaviour {
 	
 		if (playerDistance < 20f) 
 		{
-			//calling the chase function
-			chase();
+
+			if (playerDistance > 8) 
+			{
+				//calling the chase function
+				chase();
+			}
+				
+		
 		}
+	
+		
+	
 	
 	}
 
