@@ -68,9 +68,9 @@ public class RayCastShoot : MonoBehaviour {
 		//gunAudio.Play ();
 
 		//This will turn on and off the laser line.
-		laserLine.enabled = true;
-		yield return shotDuration;
 		laserLine.enabled = false;
+		yield return shotDuration;
+		laserLine.enabled = true;
 	}
 
 
