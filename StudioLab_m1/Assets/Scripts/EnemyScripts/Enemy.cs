@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
 	public Transform player;
 	public float playerDistance;
 	public float rotationDamping;
-
+	public float moveSpeed;
 
 
 	// Use this for initialization
@@ -27,6 +27,13 @@ public class Enemy : MonoBehaviour {
 			lookAtPlayer ();
 		}
 
+	
+		if (playerDistance < 20f) 
+		{
+			//calling the chase function
+			chase();
+		}
+	
 	}
 
 
@@ -34,9 +41,18 @@ public class Enemy : MonoBehaviour {
 	{
 
 		Quaternion rotation = Quaternion.LookRotation (player.position - transform.position);
+
 		//Slerp rotates one object to another in a given amount of time.
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationDamping);
 	}
+
+	//Function for chasing the player
+	void chase()
+	{
+		transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+	}
+
+
 
 
 
