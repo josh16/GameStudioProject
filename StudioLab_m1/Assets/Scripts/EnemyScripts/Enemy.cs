@@ -6,11 +6,18 @@ public class Enemy : MonoBehaviour {
 	//The Target to look at
 	public Transform target;
 
-	public Transform player;
+    //reference to dodge player
+    public GameObject _PlayerAttacks;
+
+    public Transform player;
 	public float playerDistance;
 	public float rotationDamping;
 	public float moveSpeed;
 
+    //boolean for enemy to dodge
+    public bool Nearby = false;
+    public int randomNum;
+    public float DodgeSpeed;
 
 	// Use this for initialization
 	void Start () 
@@ -39,8 +46,8 @@ public class Enemy : MonoBehaviour {
 				
 		
 		}
-	
-		
+
+        Dodge();
 	
 	
 	}
@@ -61,8 +68,29 @@ public class Enemy : MonoBehaviour {
 		transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 	}
 
+    //Function for enemy to dodge
+    void Dodge()
+    {
+        if(Nearby == true)
+        {
+            if(randomNum == 1)
+            {
+                transform.Translate(Vector3.back * DodgeSpeed * Time.deltaTime);
 
+            }
+            else
+            {
+                transform.Translate(Vector3.right * DodgeSpeed * Time.deltaTime);
+            }
+        }
 
+    }
+
+    public IEnumerator EnemyMovetimer()
+    {
+        yield return new WaitForSeconds(1f);
+        Nearby = false;
+    }
 
 
 	/*
