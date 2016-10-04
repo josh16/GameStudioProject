@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour {
 	public Transform target;
 
     //reference to dodge player
-    public GameObject _PlayerAttacks;
+    //public GameObject _PlayerAttacks;
 
     public Transform player;
 	public float playerDistance;
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour {
 		
 		}
 
-        Dodge();
+        //Dodge();
 	
 	
 	}
@@ -68,7 +68,8 @@ public class Enemy : MonoBehaviour {
 		transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 	}
 
-    //Function for enemy to dodge
+   /*COMMENTED CODE!!!!!!!
+	//Function for enemy to dodge
     void Dodge()
     {
         if(Nearby == true)
@@ -92,6 +93,16 @@ public class Enemy : MonoBehaviour {
         Nearby = false;
     }
 
+	*/ 
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag ("PlayerBullet")) 
+		{
+			transform.Translate(Vector3.back * DodgeSpeed * Time.deltaTime);
+		}
+
+	}
 
 	/*
 	//Player looks at target when player steps in radius of collider
