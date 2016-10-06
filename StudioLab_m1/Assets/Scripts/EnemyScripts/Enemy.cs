@@ -5,23 +5,29 @@ public class Enemy : MonoBehaviour {
 
 	//The Target to look at
 	public Transform target;
+	public Transform CurrentPos;
 
-    //reference to dodge player
-    //public GameObject _PlayerAttacks;
 
-    public Transform player;
+    //Weapon instantiation
+	//public GameObject EnemyBullet;
+	//public float EnemyBullet_Speed;
+	//private float counter = 0;
+	public float delayTime = 7f;
+
+	public GameObject Position_1;
+	public GameObject Position_2;
+
+
+	//Enemy's Transform, damping, searching for player's distance and move speed variables
+	public Transform player;
 	public float playerDistance;
 	public float rotationDamping;
 	public float moveSpeed;
-
-    //boolean for enemy to dodge
-    public bool Nearby = false;
-    public int randomNum;
-    public float DodgeSpeed;
+	public float DodgeSpeed;
 
 	// Use this for initialization
 	void Start () 
-{
+	{
 		
 	}
 
@@ -34,6 +40,7 @@ public class Enemy : MonoBehaviour {
 			lookAtPlayer ();
 		}
 
+
 	
 		if (playerDistance < 20f) 
 		{
@@ -43,12 +50,8 @@ public class Enemy : MonoBehaviour {
 				//calling the chase function
 				chase();
 			}
-				
-		
-		}
 
-        //Dodge();
-	
+		}
 	
 	}
 
@@ -68,74 +71,50 @@ public class Enemy : MonoBehaviour {
 		transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 	}
 
-   /*COMMENTED CODE!!!!!!!
-	//Function for enemy to dodge
-    void Dodge()
-    {
-        if(Nearby == true)
-        {
-            if(randomNum == 1)
-            {
-                transform.Translate(Vector3.back * DodgeSpeed * Time.deltaTime);
+    
 
-            }
-            else
-            {
-                transform.Translate(Vector3.right * DodgeSpeed * Time.deltaTime);
-            }
-        }
-
-    }
-
-    public IEnumerator EnemyMovetimer()
+	public IEnumerator EnemyMovetimer()
     {
         yield return new WaitForSeconds(1f);
         Nearby = false;
     }
+	
+	
+	public bool Nearby = false;
 
-	*/ 
 
 	void OnTriggerEnter(Collider other)
 	{
+		//Random generating Variable
+		int randomNum = Random.Range(0, 2);
+
+
+
 		if (other.gameObject.CompareTag ("PlayerBullet")) 
 		{
-			transform.Translate(Vector3.back * DodgeSpeed * Time.deltaTime);
-		}
+			
+			Nearby = true;
 
-	}
+			if(Nearby == true)
+			{
+				if (randomNum < 1)
+				{
+					transform.Translate(Vector3.left * DodgeSpeed * Time.deltaTime);
 
-	/*
-	//Player looks at target when player steps in radius of collider
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.CompareTag("Player"))
-		{
-			transform.LookAt(target);
+				} 
+				else
+				{
+					transform.Translate (Vector3.right * DodgeSpeed * Time.deltaTime);
 
-		}
-	}
-
-	//The Enemy will constantly look at the Player while player is inside the collider
-	void OnTriggerStay(Collider other)
-	{
-		if (other.gameObject.CompareTag("Player"))
-		{
-			transform.LookAt(target);
+				}
+			
+			}
 
 		}
-	}
 
-
-	//
-	void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.CompareTag("Player"))
-		{
-			// Code here for when the Enemy Attacks player
-
-		}
 	}
 		
-	*/
+
+
 
 }
