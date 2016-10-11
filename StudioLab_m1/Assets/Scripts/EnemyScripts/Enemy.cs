@@ -4,8 +4,11 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
 	//The Target to look at
-	public Transform target;
-	public Transform CurrentPos;
+	//public Transform target;
+	//public Transform CurrentPos;
+
+	//public float time_Mov_1 = 0;
+	//public float time_Mov_2 = 0;
 
 
     //Weapon instantiation
@@ -14,16 +17,13 @@ public class Enemy : MonoBehaviour {
 	//private float counter = 0;
 	public float delayTime = 7f;
 
-	public GameObject Position_1;
-	public GameObject Position_2;
-
 
 	//Enemy's Transform, damping, searching for player's distance and move speed variables
 	public Transform player;
 	public float playerDistance;
 	public float rotationDamping;
 	public float moveSpeed;
-	public float DodgeSpeed;
+	public float DodgeSpeed = 65;
 
 	// Use this for initialization
 	void Start () 
@@ -35,14 +35,14 @@ public class Enemy : MonoBehaviour {
 	{
 		playerDistance = Vector3.Distance (player.position,	transform.position);
 
-		if (playerDistance < 30f) 
+		if (playerDistance < 40f) 
 		{
 			lookAtPlayer ();
 		}
 
 
 	
-		if (playerDistance < 20f) 
+		if (playerDistance < 25f) 
 		{
 
 			if (playerDistance > 8) 
@@ -52,6 +52,9 @@ public class Enemy : MonoBehaviour {
 			}
 
 		}
+	
+
+	
 	
 	}
 
@@ -86,7 +89,7 @@ public class Enemy : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		//Random generating Variable
-		int randomNum = Random.Range(0, 2);
+		int randomNum = Random.Range(0,2);
 
 
 
@@ -95,20 +98,25 @@ public class Enemy : MonoBehaviour {
 			
 			Nearby = true;
 
-			if(Nearby == true)
-			{
+			//if(Nearby == true)
+			//{
+
 				if (randomNum < 1)
 				{
-					transform.Translate(Vector3.left * DodgeSpeed * Time.deltaTime);
+				transform.Translate(Vector3.left * DodgeSpeed* Time.deltaTime);
 
 				} 
 				else
 				{
-					transform.Translate (Vector3.right * DodgeSpeed * Time.deltaTime);
+				transform.Translate (Vector3.right * DodgeSpeed* Time.deltaTime);
+					
+
+				//Enumerator for how long it will take the enemy to dodge
+				//Add force instead of transform to enemy for smoother dodging
 
 				}
 			
-			}
+			//}
 
 		}
 
