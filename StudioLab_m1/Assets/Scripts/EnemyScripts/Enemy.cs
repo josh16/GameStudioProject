@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		//Random generating Variable
-		int randomNum = Random.Range(0,2);
+		int randomNum = Random.Range(0,3);
 
 
 
