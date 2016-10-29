@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour {
 	//private float counter = 0;
 	public float delayTime = 7f;
 
+	//The RigidBody for enemey
+
 
 	//Enemy's Transform, damping, searching for player's distance and move speed variables
 	public Transform player;
@@ -26,10 +28,6 @@ public class Enemy : MonoBehaviour {
 	public float DodgeSpeed = 65;
 
 	// Use this for initialization
-	void Start () 
-	{
-		
-	}
 
 	void Update () 
 	{
@@ -41,7 +39,6 @@ public class Enemy : MonoBehaviour {
 		}
 
 
-	
 		if (playerDistance < 25f) 
 		{
 
@@ -52,9 +49,6 @@ public class Enemy : MonoBehaviour {
 			}
 
 		}
-	
-
-	
 	
 	}
 
@@ -72,10 +66,10 @@ public class Enemy : MonoBehaviour {
 	void chase()
 	{
 		transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
 	}
 
     
-
 	public IEnumerator EnemyMovetimer()
     {
         yield return new WaitForSeconds(1f);
@@ -91,18 +85,19 @@ public class Enemy : MonoBehaviour {
 		//Random generating Variable
 		int randomNum = Random.Range(0,3);
 
-
+	
 
 		if (other.gameObject.CompareTag ("PlayerBullet")) 
 		{
 			
 			Nearby = true;
 
-			//if(Nearby == true)
+			if(Nearby == true)
 			//{
 
 				if (randomNum < 1)
 				{
+
 				transform.Translate(Vector3.left * DodgeSpeed* Time.deltaTime);
 
 				} 
@@ -110,13 +105,9 @@ public class Enemy : MonoBehaviour {
 				{
 				transform.Translate (Vector3.right * DodgeSpeed* Time.deltaTime);
 					
-
-				//Enumerator for how long it will take the enemy to dodge
-				//Add force instead of transform to enemy for smoother dodging
-
 				}
 			
-			//}
+			}
 
 		}
 
@@ -125,4 +116,4 @@ public class Enemy : MonoBehaviour {
 
 
 
-}
+

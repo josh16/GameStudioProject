@@ -103,3 +103,4 @@
 /Users/Josh/Desktop/GameStudioProject/StudioLab_m1/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll.mdb
 /Users/Josh/Desktop/GameStudioProject/StudioLab_m1/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
 /Users/Josh/Desktop/GameStudioProject/StudioLab_m1/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/Josh/Desktop/GameStudioProject/StudioLab_m1/Temp/bin/Debug/UnityEditor.WindowsStandalone.Extensions.dll
