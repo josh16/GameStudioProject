@@ -9,11 +9,13 @@ public class Crawler : MonoBehaviour
 
 	public float DodgeSpeed = 2;
 
+	Rigidbody rb;
 
 	void Start () 
 	{
 		//We want to call the animator at the start
 		anim = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody> ();
 	}
 
 
@@ -55,40 +57,50 @@ public class Crawler : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		int randomNum = Random.Range(0,3);
+
+		//Dodge
 
 		if (other.gameObject.CompareTag ("PlayerBullet")) 
 		{
 			
 			Nearby = true;
 
-			if(Nearby == true)
-				
-
-			if (randomNum < 1)
+			if (Nearby == true) 
 			{
 				anim.SetTrigger("Pounce");
-				transform.Translate(Vector3.left * DodgeSpeed* Time.deltaTime);
-
-
-
-			} 
-			else
-			{
-				//anim.SetBool ("Pounce", false);
-				transform.Translate (Vector3.right * DodgeSpeed* Time.deltaTime);
-				//anim.SetTrigger("Pounce");
-
-
-
-
+				StartCoroutine (TimeDodge());
 			}
+				
 
 		}
 
 	}
 
+	private IEnumerator TimeDodge ()
+	{
+		yield return new WaitForSeconds (0.5f);
+		Dodge ();
+	}
 
+	public void Dodge()
+	{
+		int randomNum = Random.Range(0,3);
+
+		if (randomNum < 1)
+		{
+			transform.Translate(Vector3.left * DodgeSpeed* Time.deltaTime);
+			//rb.AddForce(Vector3.left * DodgeSpeed* Time.deltaTime);
+			//Vector3.MoveTowards(transform.position,transform.position + Vector3.left *DodgeSpeed,30);
+
+		} 
+		else
+		{
+			transform.Translate (Vector3.right * DodgeSpeed* Time.deltaTime);
+			//rb.AddForce(Vector3.right * DodgeSpeed* Time.deltaTime);
+			//Vector3.MoveTowards(transform.position,transform.position + Vector3.right *DodgeSpeed,30);
+
+		}
+	}
 
 	
 
