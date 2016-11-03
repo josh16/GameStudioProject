@@ -7,6 +7,8 @@ public class Crawler : MonoBehaviour
 	public float chaseSpeed;
 	static Animator anim; // Declaring the Animator
 
+	public float DodgeSpeed = 2;
+
 
 	void Start () 
 	{
@@ -49,6 +51,42 @@ public class Crawler : MonoBehaviour
 
 	}
 
+	public bool Nearby = false;
+
+	void OnTriggerEnter(Collider other)
+	{
+		int randomNum = Random.Range(0,3);
+
+		if (other.gameObject.CompareTag ("PlayerBullet")) 
+		{
+			
+			Nearby = true;
+
+			if(Nearby == true)
+				
+
+			if (randomNum < 1)
+			{
+				anim.SetTrigger("Pounce");
+				transform.Translate(Vector3.left * DodgeSpeed* Time.deltaTime);
+
+
+
+			} 
+			else
+			{
+				//anim.SetBool ("Pounce", false);
+				transform.Translate (Vector3.right * DodgeSpeed* Time.deltaTime);
+				//anim.SetTrigger("Pounce");
+
+
+
+
+			}
+
+		}
+
+	}
 
 
 
