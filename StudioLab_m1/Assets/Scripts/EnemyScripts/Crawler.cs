@@ -24,7 +24,7 @@ public class Crawler : MonoBehaviour
 	void Update () 
 	{
 			
-		if (Vector3.Distance (player.position, this.transform.position) < 20) {
+		if (Vector3.Distance (player.position, this.transform.position) < 30) {
 			Vector3 direction = player.position - this.transform.position; // Setting the vector 3 direction to the player's position to move towards.
 
 			direction.y = 0; //Setting the y value to 0 so that the enemy does not rotate "Upwards".
