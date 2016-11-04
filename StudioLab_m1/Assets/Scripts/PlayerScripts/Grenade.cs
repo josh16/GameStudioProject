@@ -3,12 +3,13 @@ using System.Collections;
 
 public class Grenade : MonoBehaviour 
 {
-	public float gr_speed;
-	Rigidbody rb;
+	
+	public Rigidbody grenade;
 
 
 	//Grenade Variables
-	public GameObject grenade;
+	//public GameObject grenade;
+	public float grenadeSpeed;
 	private float GrenadeCounter = 1.0f;
 	public float delayGrenadeTime = 8.0f;
 	// Use this for initialization
@@ -24,15 +25,15 @@ public class Grenade : MonoBehaviour
 
 	}
 
-
-
-	 void GrenadeThrow()
+	void GrenadeThrow()
 	{
 		if (Input.GetKeyDown(KeyCode.E) && GrenadeCounter > delayGrenadeTime) 
 		{
 			
-			Instantiate(grenade, transform.position, transform.rotation);
-			rb.AddForce(Vector3.forward * gr_speed* Time.deltaTime);
+			Rigidbody instantiatedgrenade = Instantiate (grenade, transform.position, transform.rotation) as Rigidbody;
+			instantiatedgrenade.velocity = transform.TransformDirection (new Vector3 (0, 0, -grenadeSpeed));
+
+			//rb.AddForce(Vector3.forward * gr_speed* Time.deltaTime);
 
 			GrenadeCounter = 0;
 			Debug.Log ("Button is being pressed!");
