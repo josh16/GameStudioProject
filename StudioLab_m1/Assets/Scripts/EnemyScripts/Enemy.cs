@@ -3,18 +3,6 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	//The Target to look at
-	//public Transform target;
-	//public Transform CurrentPos;
-
-	//public float time_Mov_1 = 0;
-	//public float time_Mov_2 = 0;
-
-
-    //Weapon instantiation
-	//public GameObject EnemyBullet;
-	//public float EnemyBullet_Speed;
-	//private float counter = 0;
 	public float delayTime = 7f;
 
 	//The RigidBody for enemey
@@ -93,7 +81,6 @@ public class Enemy : MonoBehaviour {
 			Nearby = true;
 
 			if(Nearby == true)
-			//{
 
 				if (randomNum < 1)
 				{

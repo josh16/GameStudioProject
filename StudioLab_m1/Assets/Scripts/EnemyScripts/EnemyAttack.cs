@@ -15,7 +15,7 @@ public class EnemyAttack : MonoBehaviour
 	float timer;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		player = GameObject.FindGameObjectWithTag ("Player"); 
 		playerHealth = player.GetComponent<PlayerHealth>(); //Pulling the player health from the PlayerHealth script.
@@ -49,25 +49,21 @@ public class EnemyAttack : MonoBehaviour
 		if (playerHealth.CurrentHealth > 0) 
 		{
 			playerHealth.TakeDamage(AttackDamage); // Amount of damage is 10, it's declared at the top.
-		}
-	}
+            Debug.Log("Hit Player!!!!");
+        }
+      
+    }
 
 
 	// Update is called once per frame
 	void Update () 
 	{
-		timer += Time.deltaTime;
+        timer += Time.deltaTime;
 
 		if (timer >= TimeBetweenAttacks && playerInRange) // time in bewtween enemy attacks
 		{
 			Attack (); // Calling the attack method
 		}
 	
-	
-		/*if (playerHealth.CurrentHealth <= 0) 
-		{
-
-		}
-		*/
 	}	
 }

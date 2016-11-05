@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
 	
 	//Bullet Variables
 	public GameObject bullet;
-	public float delayTime = 8f;
-	private float counter = 0;
-
-
-
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public float delayTime = 8f;
+    private float counter = 0;
+  
+    // Use this for initialization
+    void Start ()
+    {
+   
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () 
@@ -26,16 +26,15 @@ public class Shoot : MonoBehaviour
             //audio will play
             //audio.Play();
             //setting counter to zero again
-  
-        }
+         }
 			counter += Time.deltaTime;
-    
-	
-	}
+    }
 
+   
 
+    void Update()
+    {
+      
 
-
-
-
+    }
 }

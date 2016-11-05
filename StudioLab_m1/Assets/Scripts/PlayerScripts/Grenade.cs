@@ -8,7 +8,6 @@ public class Grenade : MonoBehaviour
 
 
 	//Grenade Variables
-	//public GameObject grenade;
 	public float grenadeSpeed;
 	private float GrenadeCounter = 1.0f;
 	public float delayGrenadeTime = 8.0f;
@@ -38,10 +37,14 @@ public class Grenade : MonoBehaviour
 			GrenadeCounter = 0;
 			Debug.Log ("Button is being pressed!");
 
+
 		}
 		GrenadeCounter += Time.deltaTime;
 	}
 
-
+    void OnTriggerEnter()
+    {
+        Destroy(this.gameObject);
+    }
 
 }

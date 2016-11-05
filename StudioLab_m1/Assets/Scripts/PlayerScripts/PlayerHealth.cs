@@ -11,33 +11,29 @@ public class PlayerHealth : MonoBehaviour
 	public float CurrentHealth;
 	public Slider HealthSlider;
 	public Image damageImage;
-	public float flashSpeed = 5f;
+
+    public float flashSpeed = 5.0f;
 	public Color flashColour = new Color (1.0f, 0.0f, 0.0f, 1.0f); //Colour red
 
-	//Damage and dead booleans
+	//AudioSource playerAudio;
+    //Damage and dead booleans
 	bool IsDead;
 	bool Damaged;
 
-	//Audio files
-	/*
-	public Audioclip Death sound;
-	*/
-
-
-	public FirstPersonController playerMovement;
+	
+	 FirstPersonController playerMovement;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
-		playerMovement = GetComponent<FirstPersonController> ();
-		CurrentHealth = StartingHealth;
+		playerMovement = GetComponent<FirstPersonController>();
+		CurrentHealth = StartingHealth; 
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-	
-		if (Damaged) 
+	    if (Damaged) 
 		{
 			damageImage.color = flashColour;
 		} 
@@ -57,17 +53,27 @@ public class PlayerHealth : MonoBehaviour
 
 		CurrentHealth -= amount; // applying the amount of damgae to the players currenthealth.
 
-		HealthSlider.value = CurrentHealth; //Slider value will change to what the players current health is.
+        //playerAudio.Play();
+
+        HealthSlider.value = CurrentHealth; //Slider value will change to what the players current health is.
 
 		//Audio sound
 		//playerAudio.play();
 
-		/*
+		
 		if (CurrentHealth <= 0 && !IsDead) 
 		{
-			//Destroy this gameobject and play an animation before it or start a couroutine???something..
-		}
-		*/
+            //Destroy this gameobject and play an animation before it or start a couroutine???something..
+            Death();
+        }
+		
 	}
+
+
+    void Death()
+    {
+        //playerAudio.Play();
+        playerMovement.enabled = false;
+    }
 
 }

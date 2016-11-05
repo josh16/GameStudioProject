@@ -33,7 +33,7 @@ public class Crawler : MonoBehaviour
 		
 		
 			anim.SetBool ("isIdle", false); 
-			if (direction.magnitude > 10) { // This code will make the enemy chase the player and a specified speed.
+			if (direction.magnitude > 4) { //How close the enemy will come up to the player
 				this.transform.Translate (0, 0, chaseSpeed); // Enemy is on the X axis.
 				anim.SetBool ("isCrawling", true);
 				anim.SetBool ("isAttacking", false);
