@@ -15,7 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5.0f;
 	public Color flashColour = new Color (1.0f, 0.0f, 0.0f, 1.0f); //Colour red
 
-	//AudioSource playerAudio;
+    public AudioClip getHit;
+    
     //Damage and dead booleans
 	bool IsDead;
 	bool Damaged;
@@ -36,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
 	    if (Damaged) 
 		{
 			damageImage.color = flashColour;
+            AudioSource.PlayClipAtPoint(getHit, transform.position);
 		} 
 		else 
 		{

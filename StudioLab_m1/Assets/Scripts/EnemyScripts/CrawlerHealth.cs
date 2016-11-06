@@ -52,6 +52,10 @@ public class CrawlerHealth : MonoBehaviour
             HealthSliderEnemy.value = CurrentHealth;
         }
 
-      
+        //Need to fix this destroy script
+      if(CurrentHealth == 0.0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
