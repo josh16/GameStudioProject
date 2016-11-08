@@ -49,6 +49,7 @@ public class EnemyAttack : MonoBehaviour
 		if (playerHealth.CurrentHealth > 0) 
 		{
 			playerHealth.TakeDamage(AttackDamage); // Amount of damage is 10, it's declared at the top.
+
             Debug.Log("Hit Player!!!!");
         }
       

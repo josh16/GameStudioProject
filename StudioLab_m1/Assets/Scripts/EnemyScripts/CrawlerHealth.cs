@@ -25,17 +25,7 @@ public class CrawlerHealth : MonoBehaviour
 
 
 
-    void Start()
-    { 
-    }
- 
-
-    void Update()
-    {
-
-    }
-	
-    void OnCollisionEnter(Collision collision)
+	void OnCollisionEnter(Collision collision)
     {
       
         if (collision.gameObject.CompareTag("PlayerBullet"))
@@ -56,6 +46,22 @@ public class CrawlerHealth : MonoBehaviour
       if(CurrentHealth == 0.0f)
         {
             Destroy(this.gameObject);
+			Debug.Log ("I'm dead!!!");
         }
-    }
+    
+	}
+
+
+
+
+	void Start()
+	{ 
+	}
+
+
+	void Update()
+	{
+
+	}
+
 }

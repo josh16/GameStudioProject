@@ -11,16 +11,16 @@ public class PlayerHealth : MonoBehaviour
 	public float CurrentHealth;
 	public Slider HealthSlider;
 	public Image damageImage;
-
+	public float HP;
     public float flashSpeed = 5.0f;
 	public Color flashColour = new Color (1.0f, 0.0f, 0.0f, 1.0f); //Colour red
 
-    public AudioClip getHit;
+    //public AudioClip getHit;
     
     //Damage and dead booleans
 	bool IsDead;
 	bool Damaged;
-
+	bool RecieveHealth;
 	
 	 FirstPersonController playerMovement;
 
@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
 	    if (Damaged) 
 		{
 			damageImage.color = flashColour;
-            AudioSource.PlayClipAtPoint(getHit, transform.position);
+            //AudioSource.PlayClipAtPoint(getHit, transform.position);
 		} 
 		else 
 		{
@@ -70,6 +70,34 @@ public class PlayerHealth : MonoBehaviour
         }
 		
 	}
+
+
+
+
+
+	void OnTriggerEnter(Collider other)
+	{
+		
+		if (CurrentHealth < 100) 
+		{
+
+			if (other.gameObject.tag == "HealthPickup")
+			{
+				CurrentHealth += HP;
+				Debug.Log ("Recieved some HP!!");
+				HealthSlider.value = CurrentHealth;
+			}
+
+
+		}
+
+
+	}
+
+
+
+
+
 
 
     void Death()
